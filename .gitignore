@@ -8,7 +8,7 @@ Thumbs.db
 *.swp
 *~
 
-# Node.js (если появится сборка)
+# Node.js
 node_modules/
 npm-debug.log*
 yarn-error.log*

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Индивидуальные тренировки — DanceStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">Dance<span>Start</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="schedule.html">Расписание</a></li>
+        <li><a href="booking.html" class="active">Индивидуально</a></li>
+        <li><a href="reviews.html">Отзывы и FAQ</a></li>
+      </ul>
+      <button class="burger" aria-label="Меню">&#9776;</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Индивидуальные тренировки</h1>
+      <p class="section-subtitle booking-hint">
+        Выберите тренера и запишитесь на персональное занятие. Длительность — 45 минут.
+        Начало возможно в 00, 15, 30 и 45 минут каждого часа (09:00 – 21:00).
+      </p>
+
+      <div class="trainers-grid" id="booking-trainers"></div>
+    </div>
+  </section>
+
+  <!-- МОДАЛЬНОЕ ОКНО -->
+  <div class="modal" id="booking-modal" aria-hidden="true">
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close aria-label="Закрыть">&times;</button>
+      <h2 id="modal-title">Запись на тренировку</h2>
+      <p class="modal-trainer">Тренер: <strong id="modal-trainer-name"></strong></p>
+
+      <form id="booking-form" novalidate>
+        <label>
+          ФИО
+          <input type="text" name="fio" placeholder="Иванов Иван Иванович" required>
+        </label>
+
+        <label>
+          Телефон
+          <input type="tel" name="phone" placeholder="+7 (999) 123-45-67"
+                 pattern="[\+0-9\s\(\)\-]{10,20}" required>
+        </label>
+
+        <label>
+          Дата
+          <select name="date" id="select-date" required></select>
+        </label>
+
+        <label>
+          Время
+          <select name="time" id="select-time" required></select>
+        </label>
+
+        <button type="submit" class="btn btn-coral">Записаться</button>
+        <p class="form-message" id="form-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> DanceStart — танцевальный клуб.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
