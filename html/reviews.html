@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзывы и FAQ — DanceStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">Dance<span>Start</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="schedule.html">Расписание</a></li>
+        <li><a href="booking.html">Индивидуально</a></li>
+        <li><a href="reviews.html" class="active">Отзывы и FAQ</a></li>
+      </ul>
+      <button class="burger" aria-label="Меню">&#9776;</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Отзывы наших воспитанников</h1>
+      <p class="section-subtitle">Что говорят о клубе DanceStart и его тренерах.</p>
+
+      <div class="reviews-grid" id="reviews-list"></div>
+
+      <h2 class="faq-title">Популярные вопросы</h2>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> DanceStart — танцевальный клуб.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+</html>
