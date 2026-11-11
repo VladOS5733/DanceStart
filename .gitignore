@@ -1,0 +1,28 @@
+# Операционные системы
+.DS_Store
+Thumbs.db
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node.js (если появится сборка)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Сборки
+dist/
+build/
+
+# Логи
+*.log
+
+# Переменные окружения
+.env
+.env.local
+
+# Временные файлы
+*.tmp
