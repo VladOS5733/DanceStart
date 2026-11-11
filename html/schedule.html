@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписание — DanceStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">Dance<span>Start</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="schedule.html" class="active">Расписание</a></li>
+        <li><a href="booking.html">Индивидуально</a></li>
+        <li><a href="reviews.html">Отзывы и FAQ</a></li>
+      </ul>
+      <button class="burger" aria-label="Меню">&#9776;</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Расписание на неделю</h1>
+      <p class="section-subtitle">Выберите тренировку, тренера, день или время — таблица обновится автоматически.</p>
+
+      <div class="filters">
+        <div class="filter">
+          <label for="filter-training">Тренировка</label>
+          <select id="filter-training"><option value="">Все тренировки</option></select>
+        </div>
+        <div class="filter">
+          <label for="filter-trainer">Тренер</label>
+          <select id="filter-trainer"><option value="">Все тренеры</option></select>
+        </div>
+        <div class="filter">
+          <label for="filter-day">День недели</label>
+          <select id="filter-day"><option value="">Все дни</option></select>
+        </div>
+        <div class="filter">
+          <label for="filter-time">Время</label>
+          <select id="filter-time">
+            <option value="">Любое время</option>
+            <option value="Утро">Утро (до 12:00)</option>
+            <option value="День">День (12:00–17:00)</option>
+            <option value="Вечер">Вечер (после 17:00)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>День</th>
+              <th>Время</th>
+              <th>Тренировка</th>
+              <th>Тренер</th>
+              <th>Формат</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> DanceStart — танцевальный клуб.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/schedule.js"></script>
+</body>
+</html>
