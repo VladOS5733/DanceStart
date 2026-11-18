@@ -21,7 +21,7 @@
         <li><a href="booking.html" class="active">Индивидуально</a></li>
         <li><a href="reviews.html">Отзывы и FAQ</a></li>
         <li class="nav-btn-wrapper">
-          <a href="booking.html" class="btn btn-coral nav-btn">Записаться</a>
+          <a href="checkout.html" class="btn btn-coral nav-btn">Записаться</a>
         </li>
       </ul>
       <button class="burger" aria-label="Меню">&#9776;</button>
@@ -50,42 +50,6 @@
       <div class="trainers-grid" id="booking-trainers"></div>
     </div>
   </section>
-
-  <!-- МОДАЛЬНОЕ ОКНО -->
-  <div class="modal" id="booking-modal" aria-hidden="true">
-    <div class="modal-overlay" data-close></div>
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" type="button" data-close aria-label="Закрыть">&times;</button>
-      <h2 id="modal-title">Запись на тренировку</h2>
-      <p class="modal-trainer">Тренер: <strong id="modal-trainer-name"></strong></p>
-
-      <form id="booking-form" novalidate>
-        <label>
-          ФИО
-          <input type="text" name="fio" placeholder="Иванов Иван Иванович" required>
-        </label>
-
-        <label>
-          Телефон
-          <input type="tel" name="phone" placeholder="+7 (999) 123-45-67"
-                 pattern="[\+0-9\s\(\)\-]{10,20}" required>
-        </label>
-
-        <label>
-          Дата
-          <select name="date" id="select-date" required></select>
-        </label>
-
-        <label>
-          Время
-          <select name="time" id="select-time" required></select>
-        </label>
-
-        <button type="submit" class="btn btn-coral">Записаться</button>
-        <p class="form-message" id="form-message"></p>
-      </form>
-    </div>
-  </div>
 
     <footer class="site-footer">
     <div class="container">

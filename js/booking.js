@@ -9,32 +9,48 @@ const trainers = [
   { id: 8, name: 'Алексей Лебедев', direction: 'Hip-Hop', img: 'https://i.pravatar.cc/400?img=15' },
 ];
 
-const grid         = document.getElementById('booking-trainers');
-const modal        = document.getElementById('booking-modal');
-const modalName    = document.getElementById('modal-trainer-name');
-const form         = document.getElementById('booking-form');
-const selectDate   = document.getElementById('select-date');
-const selectTime   = document.getElementById('select-time');
-const formMessage  = document.getElementById('form-message');
+const grid = document.getElementById('booking-trainers');
 
-function renderTrainers() {
+if (grid) {
   grid.innerHTML = trainers.map((t) => `
-    <article class="trainer-card bookable" data-id="${t.id}" tabindex="0">
+    <article class="trainer-card bookable">
       <img class="trainer-photo" src="${t.img}" alt="${t.name}">
       <div class="trainer-info">
         <h3 class="trainer-name">${t.name}</h3>
         <p class="trainer-direction">${t.direction}</p>
       </div>
-      <button class="btn btn-coral book-btn" type="button">Записаться</button>
+      <!-- Теперь это ссылка, которая передает ID тренера в URL -->
+      <a href="checkout.html?trainer=${t.id}" class="btn btn-coral book-btn" style="text-align:center;">Записаться</a>
     </article>
   `).join('');
 }
 
-const WEEKDAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-const MONTHS   = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+const form = document.getElementById('checkout-form');
 
-function fillDates() {
+if (form) {
+  const selectTrainer = document.getElementById('select-trainer');
+  const selectDate = document.getElementById('select-date');
+  const selectTime = document.getElementById('select-time');
+  const formMessage = document.getElementById('form-message');
+
+  // 1. Заполняем выпадающий список тренеров
+  selectTrainer.innerHTML += trainers.map(t => 
+    `<option value="${t.id}">${t.name} (${t.direction})</option>`
+  ).join('');
+
+  // 2. Проверяем URL: если есть ?trainer=1, выбираем этого тренера
+  const urlParams = new URLSearchParams(window.location.search);
+  const trainerId = urlParams.get('trainer');
+  
+  if (trainerId) {
+    selectTrainer.value = trainerId; // Автоматически выбираем тренера
+  }
+
+  // 3. Заполняем даты (на 14 дней вперед)
+  const WEEKDAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  const MONTHS = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
   const today = new Date();
+  
   for (let i = 0; i < 14; i++) {
     const d = new Date(today);
     d.setDate(today.getDate() + i);
@@ -45,12 +61,11 @@ function fillDates() {
     opt.textContent = label;
     selectDate.appendChild(opt);
   }
-}
 
-function fillTimes() {
+  // 4. Заполняем время
   for (let h = 9; h <= 21; h++) {
     for (const m of [0, 15, 30, 45]) {
-      if (h === 21 && m > 0) continue; // последний слот — 21:00
+      if (h === 21 && m > 0) continue;
       const value = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
       const opt = document.createElement('option');
       opt.value = value;
@@ -58,95 +73,43 @@ function fillTimes() {
       selectTime.appendChild(opt);
     }
   }
-}
 
-function openModal(trainerId) {
-  const trainer = trainers.find((t) => t.id === trainerId);
-  if (!trainer) return;
+  // 5. Обработка отправки формы
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  modalName.textContent = trainer.name;
-  form.reset();
-  formMessage.textContent = '';
-  formMessage.className = 'form-message';
+    const fio = form.fio.value.trim();
+    const phone = form.phone.value.trim();
+    const trainerId = form.trainer.value;
+    const date = form.date.value;
+    const time = form.time.value;
 
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-
-  form.querySelector('input[name="fio"]').focus();
-}
-
-function closeModal() {
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-grid.addEventListener('click', (e) => {
-  const card = e.target.closest('.bookable');
-  if (card) openModal(Number(card.dataset.id));
-});
-
-grid.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    const card = e.target.closest('.bookable');
-    if (card) {
-      e.preventDefault();
-      openModal(Number(card.dataset.id));
+    // Валидация
+    if (!trainerId) {
+      formMessage.textContent = 'Пожалуйста, выберите тренера';
+      formMessage.className = 'form-message error';
+      return;
     }
-  }
-});
+    if (fio.length < 5) {
+      formMessage.textContent = 'Введите корректное ФИО';
+      formMessage.className = 'form-message error';
+      return;
+    }
+    if (!/^[\+0-9\s\(\)\-]{10,20}$/.test(phone)) {
+      formMessage.textContent = 'Введите корректный номер телефона';
+      formMessage.className = 'form-message error';
+      return;
+    }
 
-modal.addEventListener('click', (e) => {
-  if (e.target.matches('[data-close]')) closeModal();
-});
+    // Ищем имя тренера для сообщения
+    const trainerName = trainers.find(t => t.id == trainerId)?.name || 'тренеру';
+    const [y, m, d] = date.split('-');
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-});
+    formMessage.textContent = `Готово! Вы записаны на ${d}.${m}.${y} в ${time} к тренеру ${trainerName}.`;
+    formMessage.className = 'form-message success';
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const fio   = form.fio.value.trim();
-  const phone = form.phone.value.trim();
-  const date  = form.date.value;
-  const time  = form.time.value;
-
-  if (fio.length < 5) {
-    formMessage.textContent = 'Введите корректное ФИО';
-    formMessage.className = 'form-message error';
-    return;
-  }
-  if (!/^[\+0-9\s\(\)\-]{10,20}$/.test(phone)) {
-    formMessage.textContent = 'Введите корректный номер телефона';
-    formMessage.className = 'form-message error';
-    return;
-  }
-  if (!date || !time) {
-    formMessage.textContent = 'Выберите дату и время';
-    formMessage.className = 'form-message error';
-    return;
-  }
-
-  const [y, m, d] = date.split('-');
-  formMessage.textContent =
-    `Готово! Вы записаны на ${d}.${m}.${y} в ${time} к тренеру ${modalName.textContent}.`;
-  formMessage.className = 'form-message success';
-
-  form.querySelector('input[name="fio"]').value = '';
-  form.querySelector('input[name="phone"]').value = '';
-
-  setTimeout(closeModal, 2200);
-});
-
-renderTrainers();
-fillDates();
-fillTimes();
-
-const scrollTopBtn = document.getElementById('scrollTop');
-if (scrollTopBtn) {
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Очистка полей
+    form.fio.value = '';
+    form.phone.value = '';
   });
 }

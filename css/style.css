@@ -657,3 +657,45 @@ a.contact-value:hover {
   color: var(--dark);
   font-weight: 600;
 }
+
+/* ============ ФОРМА БРОНИРОВАНИЯ (Страница) ============ */
+.booking-form-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#checkout-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+#checkout-form input,
+#checkout-form select {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--light);
+  color: var(--dark);
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+#checkout-form input:focus,
+#checkout-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+}
