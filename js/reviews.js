@@ -17,16 +17,47 @@ const faq = [
 ];
 
 const reviewsList = document.getElementById('reviews-list');
-reviewsList.innerHTML = reviews.map((r) => `
-  <article class="review-card">
-    <div class="review-header">
-      <span class="review-author">${r.author}</span>
-      <span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
-    </div>
-    <p class="review-text">${r.text}</p>
-  </article>
-`).join('');
 
+// 1. Выносим рендер отзывов в отдельную функцию
+function renderReviews() {
+  reviewsList.innerHTML = reviews.map((r) => `
+    <article class="review-card">
+      <div class="review-header">
+        <span class="review-author">${r.author}</span>
+        <span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+      </div>
+      <p class="review-text">${r.text}</p>
+    </article>
+  `).join('');
+}
+
+// Вызываем рендер при загрузке страницы
+renderReviews();
+
+// 2. Обработка формы добавления отзыва
+const reviewForm = document.getElementById('add-review-form');
+if (reviewForm) {
+  reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const author = document.getElementById('review-author').value.trim();
+    const rating = Number(document.getElementById('review-rating').value);
+    const text = document.getElementById('review-text').value.trim();
+
+    if (author && text) {
+      // Добавляем новый отзыв в начало массива (чтобы он был первым в списке)
+      reviews.unshift({ author, rating, text });
+      
+      // Перерисовываем список
+      renderReviews();
+      
+      // Очищаем форму
+      reviewForm.reset();
+    }
+  });
+}
+
+// (Твой старый код для FAQ остается без изменений)
 const faqList = document.getElementById('faq-list');
 faqList.innerHTML = faq.map((item, i) => `
   <div class="faq-item">
@@ -54,10 +85,3 @@ faqList.addEventListener('click', (e) => {
     btn.setAttribute('aria-expanded', 'true');
   }
 });
-
-const scrollTopBtn = document.getElementById('scrollTop');
-if (scrollTopBtn) {
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}

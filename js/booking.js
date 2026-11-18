@@ -1,12 +1,12 @@
 const trainers = [
-  { id: 1, name: 'Анна Смирнова',   direction: 'Классическая хореография', img: 'https://i.pravatar.cc/400?img=47' },
-  { id: 2, name: 'Дмитрий Козлов',  direction: 'ОФП и функциональная подготовка', img: 'https://i.pravatar.cc/400?img=12' },
-  { id: 3, name: 'Елена Волкова',   direction: 'Технические прогоны', img: 'https://i.pravatar.cc/400?img=32' },
-  { id: 4, name: 'Максим Петров',   direction: 'Современная хореография', img: 'https://i.pravatar.cc/400?img=13' },
-  { id: 5, name: 'Ольга Новикова',  direction: 'Теоретическая подготовка', img: 'https://i.pravatar.cc/400?img=45' },
-  { id: 6, name: 'Сергей Морозов',  direction: 'Брейк-данс', img: 'https://i.pravatar.cc/400?img=59' },
-  { id: 7, name: 'Ирина Соколова',  direction: 'Латиноамериканская программа', img: 'https://i.pravatar.cc/400?img=48' },
-  { id: 8, name: 'Алексей Лебедев', direction: 'Hip-Hop', img: 'https://i.pravatar.cc/400?img=15' },
+  { id: 1, name: 'Анна Смирнова',   direction: 'Классическая хореография', img: '../images/Anna_Smirnova.jpg' },
+  { id: 2, name: 'Дмитрий Козлов',  direction: 'ОФП и функциональная подготовка', img: '../images/Dmitriy_Kozlov.jpg' },
+  { id: 3, name: 'Елена Волкова',   direction: 'Технические прогоны', img: '../images/Elena_Volkova.jpg' },
+  { id: 4, name: 'Максим Петров',   direction: 'Современная хореография', img: '../images/Maksim_Petrov.jpg' },
+  { id: 5, name: 'Ольга Ситало',  direction: 'Теоретическая подготовка', img: '../images/Olga_Sytalo.jpg' },
+  { id: 6, name: 'Кирилл Новосельский',  direction: 'Брейк-данс', img: '../images/Kirill_Novoselskiy.jpg' },
+  { id: 7, name: 'Светлана Гудыно',  direction: 'Латиноамериканская программа', img: '../images/Svetlana_Gudino.jpg' },
+  { id: 8, name: 'Андрей Серпов', direction: 'Hip-Hop', img: '../images/Andrew_Serpov.jpg' },
 ];
 
 const grid = document.getElementById('booking-trainers');
