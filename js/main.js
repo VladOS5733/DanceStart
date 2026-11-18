@@ -22,3 +22,10 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
   });
 });
+
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

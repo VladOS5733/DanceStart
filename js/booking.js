@@ -143,3 +143,10 @@ form.addEventListener('submit', (e) => {
 renderTrainers();
 fillDates();
 fillTimes();
+
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

@@ -100,5 +100,11 @@ fillSelect(selectDay,      uniqueValues(lessons, 'day').sort((a, b) => dayOrder[
   s.addEventListener('change', render);
 });
 
-// Первый рендер
 render();
+
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
