@@ -70,6 +70,15 @@ img { display: block; max-width: 100%; }
 .nav-links a:hover,
 .nav-links a.active { color: var(--primary); }
 
+/* Стили для кнопки в шапке */
+.nav-btn-wrapper {
+  margin-left: 10px;
+}
+.nav-btn {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
 .burger {
   display: none;
   background: none;
@@ -429,65 +438,62 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============ ФУТЕР ============ */
-/* ============ ФУТЕР (новый дизайн) ============ */
 .site-footer {
-  background-color: #0b0e14; /* Темный фон, как на скрине */
+  background-color: #0b0e14;
   color: #a0aab2;
-  padding: 60px 0 40px;
+  padding: 60px 0 20px;
   font-size: 0.9rem;
   position: relative;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1.5fr; 
   gap: 40px;
+  margin-bottom: 50px;
 }
 
-/* Первая колонка (Бренд) */
+/* Колонка Бренда */
 .footer-brand {
   display: flex;
   flex-direction: column;
 }
 .footer-logo {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--primary); /* Цвет "Dance" как в header */
   text-decoration: none;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .footer-logo span {
-  color: #3b82f6; /* Синяя точка */
+  color: #ffffff; /* "Start" делаем белым для читаемости на темном фоне */
 }
 .footer-desc {
   color: #8b949e;
-  line-height: 1.5;
-  margin-bottom: 40px;
+  line-height: 1.6;
   max-width: 280px;
-}
-.footer-copyright {
-  color: #586069;
-  font-size: 0.8rem;
-  margin-top: auto;
 }
 
 /* Заголовки колонок */
 .footer-title {
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Списки ссылок и контактов */
-.footer-links, .footer-contacts {
+/* Списки ссылок */
+.footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .footer-links li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .footer-links a {
   color: #a0aab2;
@@ -498,85 +504,79 @@ img { display: block; max-width: 100%; }
   color: #ffffff;
 }
 
-.footer-contacts li {
-  margin-bottom: 16px;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  line-height: 1.4;
-}
-.footer-contacts a {
-  color: #a0aab2;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-contacts a:hover {
+/* Кнопка-контур */
+.btn-footer-outline {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid #ffffff;
   color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-footer-outline:hover {
+  background: #ffffff;
+  color: #0b0e14;
 }
 
-/* Иконки */
+/* Контакты */
+.footer-contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-contacts li {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
 .footer-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   fill: none;
-  stroke: #8b949e;
-  stroke-width: 2;
+  stroke: #a0aab2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
   margin-top: 2px;
 }
-
-/* Зеленая точка для графика работы */
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #10b981;
-  border-radius: 50%;
-  display: inline-block;
-  margin-top: 6px;
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+.contact-label {
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.contact-value {
+  color: #a0aab2;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a.contact-value:hover {
+  color: #ffffff;
 }
 
-.contact-subtext {
+/* Нижняя часть (Копирайт) */
+.footer-bottom {
+  border-top: 1px solid #30363d;
+  padding-top: 24px;
+  text-align: center;
+}
+.footer-copyright {
   color: #586069;
   font-size: 0.8rem;
+  margin: 0;
 }
 
-/* Адрес и кнопка */
-.footer-address {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  line-height: 1.4;
-}
-
-.btn-route {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border: 1px solid #1d4ed8;
-  background: transparent;
-  color: #ffffff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: background 0.2s;
-}
-.btn-route:hover {
-  background: rgba(29, 78, 216, 0.15);
-}
-.btn-route svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Кнопка вверх (как на скрине) */
+/* Кнопка вверх */
 .scroll-top {
   position: absolute;
   right: 40px;
@@ -598,20 +598,20 @@ img { display: block; max-width: 100%; }
   color: #ffffff;
 }
 
+/* Адаптивность футера */
 @media (max-width: 960px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
-  .footer-desc { margin-bottom: 20px; }
 }
 @media (max-width: 560px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
   }
   .scroll-top {
     position: static;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
   }
 }
 
