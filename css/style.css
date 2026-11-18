@@ -55,6 +55,12 @@ img { display: block; max-width: 100%; }
 }
 .logo span { color: var(--dark); }
 
+.logo img {
+  height: 40px; /* Настрой высоту под свой логотип */
+  width: auto;
+  display: block;
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -77,6 +83,11 @@ img { display: block; max-width: 100%; }
 .nav-btn {
   padding: 8px 20px;
   font-size: 0.9rem;
+}
+
+/* Новое правило: делаем текст белым при наведении */
+.nav-links .nav-btn:hover {
+  color: var(--white); 
 }
 
 .burger {
@@ -439,8 +450,8 @@ img { display: block; max-width: 100%; }
 
 /* ============ ФУТЕР ============ */
 .site-footer {
-  background-color: #0b0e14;
-  color: #a0aab2;
+  background-color: #a4161a; /* Темно-рубиновый цвет */
+  color: rgba(255, 255, 255, 0.85);
   padding: 60px 0 20px;
   font-size: 0.9rem;
   position: relative;
@@ -448,7 +459,7 @@ img { display: block; max-width: 100%; }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr; 
+  grid-template-columns: 2fr 1fr 1.5fr;
   gap: 40px;
   margin-bottom: 50px;
 }
@@ -458,20 +469,28 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
 }
+
+/* Если у тебя логотип текстом (DanceStart) */
 .footer-logo {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--primary); /* Цвет "Dance" как в header */
+  color: #ffffff; /* Делаем весь текст белым, так как красный на красном не видно */
   text-decoration: none;
   margin-bottom: 20px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 .footer-logo span {
-  color: #ffffff; /* "Start" делаем белым для читаемости на темном фоне */
+  color: #ffffff; 
 }
+
+/* Если у тебя логотип картинкой, добавь это, чтобы он стал белым */
+.footer-logo img {
+  filter: brightness(0) invert(1); 
+}
+
 .footer-desc {
-  color: #8b949e;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
   max-width: 280px;
 }
@@ -496,28 +515,12 @@ img { display: block; max-width: 100%; }
   margin-bottom: 14px;
 }
 .footer-links a {
-  color: #a0aab2;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-links a:hover {
   color: #ffffff;
-}
-
-/* Кнопка-контур */
-.btn-footer-outline {
-  display: inline-block;
-  padding: 10px 24px;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-.btn-footer-outline:hover {
-  background: #ffffff;
-  color: #0b0e14;
 }
 
 /* Контакты */
@@ -536,7 +539,7 @@ img { display: block; max-width: 100%; }
   width: 20px;
   height: 20px;
   fill: none;
-  stroke: #a0aab2;
+  stroke: rgba(255, 255, 255, 0.85); /* Белые иконки */
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -548,7 +551,7 @@ img { display: block; max-width: 100%; }
   flex-direction: column;
 }
 .contact-label {
-  color: #ffffff;
+  color: #ffffff; /* Белый заголовок (Адрес, Телефон и т.д.) */
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -556,7 +559,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 4px;
 }
 .contact-value {
-  color: #a0aab2;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -566,17 +569,16 @@ a.contact-value:hover {
 
 /* Нижняя часть (Копирайт) */
 .footer-bottom {
-  border-top: 1px solid #30363d;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Полупрозрачная белая линия */
   padding-top: 24px;
   text-align: center;
 }
 .footer-copyright {
-  color: #586069;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.8rem;
   margin: 0;
 }
 
-/* Кнопка вверх */
 .scroll-top {
   position: absolute;
   right: 40px;
@@ -584,9 +586,9 @@ a.contact-value:hover {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background: #161b22;
-  border: 1px solid #30363d;
-  color: #a0aab2;
+  background: rgba(0, 0, 0, 0.2); /* Легкая темная подложка */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Более заметная белая рамка */
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -594,8 +596,8 @@ a.contact-value:hover {
   transition: all 0.2s;
 }
 .scroll-top:hover {
-  background: #21262d;
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.4);
+  border-color: #ffffff;
 }
 
 /* Адаптивность футера */
